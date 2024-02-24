@@ -5,12 +5,12 @@ import '../common/default_text.dart';
 
 class ElementCard extends StatelessWidget {
   final String name;
-  final String time;
+  final String left;
   final String imageurl;
   const ElementCard(
       {Key? key,
       required this.name,
-      required this.time,
+      required this.left,
       required this.imageurl})
       : super(key: key);
 
@@ -21,16 +21,21 @@ class ElementCard extends StatelessWidget {
     double relativeHeight = size.height / Constants.referenceHeight;
 
     return Container(
-      width: relativeWidth * 180,
+      width: relativeWidth * 200,
       height: relativeHeight * 200,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(8),
         shape: BoxShape.rectangle,
-        color: Colors.white,
+        // color: Colors.white,
+        image: DecorationImage(
+          image: AssetImage(imageurl),
+          fit: BoxFit.cover,
+          opacity: 0.5,
+        ),
       ),
       child: Card(
-        color: Colors.white,
-        elevation: 2,
+        color: Colors.transparent,
+        // elevation: 2,
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(8),
         ),
@@ -41,11 +46,19 @@ class ElementCard extends StatelessWidget {
             Center(
               child: Padding(
                 padding: EdgeInsets.only(top: relativeHeight * 20),
-                child: Image.asset(
-                  imageurl,
-                  fit: BoxFit.cover,
-                  width: relativeWidth*80,
-                  height: relativeHeight*80,
+                child: ClipRRect(
+                  borderRadius: BorderRadius.circular(8.0),
+                  child: Container(
+                    decoration: BoxDecoration(
+                      border: Border.all(color: Colors.white, width: 2.0),
+                      image: DecorationImage(
+                        image: AssetImage(imageurl),
+                        fit: BoxFit.cover,
+                      ),
+                    ),
+                    width: relativeWidth * 80,
+                    height: relativeHeight * 80,
+                  ),
                 ),
               ),
             ),
@@ -57,10 +70,10 @@ class ElementCard extends StatelessWidget {
                   Center(
                     child: DefaultText(
                       content: name,
-                      fontSizeR: 15,
-                      colorR: Color(0xFF000000),
+                      fontSizeR: 20,
+                      colorR: Color(0xFFFFFFFF),
                       textAlignR: TextAlign.center,
-                      fontWeightR: FontWeight.w400,
+                      fontWeightR: FontWeight.w700,
                     ),
                   ),
                   SizedBox(
@@ -68,11 +81,11 @@ class ElementCard extends StatelessWidget {
                   ),
                   Center(
                     child: DefaultText(
-                      content: time,
+                      content: '${left} Lefts',
                       fontSizeR: 15,
-                      colorR: Color(0xFF000000),
+                      colorR: Color(0xDAFFFFFF),
                       textAlignR: TextAlign.center,
-                      fontWeightR: FontWeight.w400,
+                      fontWeightR: FontWeight.w500,
                     ),
                   ),
                 ],

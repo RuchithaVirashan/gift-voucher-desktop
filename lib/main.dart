@@ -2,7 +2,7 @@ import 'dart:io';
 import 'package:desktop_window/desktop_window.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:gift_voucher_desktop/globle/screens/home.dart';
+import 'package:gift_voucher_desktop/screens/home.dart';
 import 'package:gift_voucher_desktop/globle/theme.dart';
 
 Future<void> main() async {

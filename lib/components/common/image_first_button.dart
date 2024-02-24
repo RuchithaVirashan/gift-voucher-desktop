@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 
-class ButtonWidget extends StatelessWidget {
+import '../../globle/constants.dart';
+
+class imageFirstButton extends StatelessWidget {
   final String buttonName;
   final Color bcolor;
   final Color fcolor;
@@ -9,9 +11,10 @@ class ButtonWidget extends StatelessWidget {
   final double minHeight;
   final Color borderColor;
   final void Function()? onPressed;
+  final String imagePath;
 
-  const ButtonWidget({
-    Key? key, // Use 'Key?' instead of 'super.key'
+  const imageFirstButton({
+    super.key,
     required this.buttonName,
     required this.bcolor,
     required this.tcolor,
@@ -19,11 +22,15 @@ class ButtonWidget extends StatelessWidget {
     required this.fcolor,
     required this.minHeight,
     required this.borderColor,
-    required this.onPressed, 
+    required this.onPressed,
+    required this.imagePath,
   });
 
   @override
   Widget build(BuildContext context) {
+    Size size = MediaQuery.of(context).size;
+    double relativeWidth = size.width / Constants.referenceWidth;
+    double relativeHeight = size.height / Constants.referenceHeight;
     return TextButton(
       style: ButtonStyle(
         backgroundColor: MaterialStateProperty.all(bcolor),
@@ -32,11 +39,12 @@ class ButtonWidget extends StatelessWidget {
             borderRadius: BorderRadius.all(Radius.circular(radius)),
           ),
         ),
-       minimumSize: MaterialStateProperty.all(Size(double.infinity, minHeight)),
+        minimumSize:
+            MaterialStateProperty.all(Size(double.infinity, minHeight)),
         padding: MaterialStateProperty.all(
           const EdgeInsets.symmetric(
-            horizontal: 20.0, // Adjust horizontal padding as needed
-            vertical: 8.0, // Adjust vertical padding as needed
+            horizontal: 20.0,
+            vertical: 8.0,
           ),
         ),
       ),
@@ -44,8 +52,16 @@ class ButtonWidget extends StatelessWidget {
         onPressed!();
       },
       child: Row(
-        mainAxisSize: MainAxisSize.min,
+        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [
+          ClipRRect(
+            child: Image(
+              image: AssetImage(imagePath),
+              height: relativeHeight * 40,
+              width: relativeWidth * 40,
+              color: Colors.grey,
+            ),
+          ),
           Text(
             buttonName,
             style: TextStyle(
