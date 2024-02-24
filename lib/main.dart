@@ -21,7 +21,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'Gift Voucher Desktop',
       theme: AppTheme.lightTheme,
-      home: HomeScreen(),
+      home: const HomeScreen(),
     );
   }
 }

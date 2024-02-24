@@ -1,7 +1,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android">
     <application
         android:label="gift_voucher_desktop"
-        android:name="${applicationName}"
+        android:name="Gift Voucher Desktop"
         android:icon="@mipmap/ic_launcher">
         <activity
             android:name=".MainActivity"

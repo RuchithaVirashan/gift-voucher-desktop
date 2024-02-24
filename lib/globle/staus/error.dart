@@ -6,15 +6,9 @@ Future<void> showErrorDialog(BuildContext context, String content) async {
     showCupertinoDialog<void>(
       context: context,
       builder: (context) => CupertinoAlertDialog(
-        title: Text('Error'),
+        title: const Text('Error'),
         content: Column(
           children: [
-            // Container(
-            //   child: Lottie.asset('assets/wrong.json',
-            //       animate: true,
-            //       height: relativeHeight * 50,
-            //       width: relativeWidth * 50),
-            // ),
             Text(content),
           ],
         ),
@@ -23,7 +17,7 @@ Future<void> showErrorDialog(BuildContext context, String content) async {
             onPressed: () {
               Navigator.of(context).pop();
             },
-            child: Text('Okay'),
+            child: const Text('Okay'),
           ),
         ],
       ),
